@@ -74,7 +74,7 @@ def recursive_summarize_chatgpt_summaries(reviews, tendancy):
             continue
         if current_length + len(review) > max_len_in_chars:
             reviews_summaries.append(summarize_with_chatgpt_summarized_reviews(reviews_groups, tendancy))
-            reviews_groups = []
+            reviews_groups = [review]
             current_length = 0
         else:
             reviews_groups.append(review)
@@ -100,7 +100,7 @@ def recursive_summarize_with_chatgpt(reviews, tendancy):
             continue
         if current_length + len(review) > max_len_in_chars:
             reviews_summaries.append(summarize_with_chatgpt_normal_reviews(reviews_groups, tendancy))
-            reviews_groups = []
+            reviews_groups = [review]
             current_length = 0
         else:
             reviews_groups.append(review)
